@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using Entitas;
 using UnityEngine;
 
+
+//IClearReactiveSystem не допустит вызов системы самой на себ€
+//IEnsureComponents сделает что уже удаленные не приход€т (если тебе нужны только живиые тоесть)
 public class ProcessNormalElementDestroy : IReactiveSystem, ISetPool
 {
 
