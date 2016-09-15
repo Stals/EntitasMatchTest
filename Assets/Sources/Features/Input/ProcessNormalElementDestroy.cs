@@ -87,44 +87,13 @@ public class ProcessNormalElementDestroy : IReactiveSystem, ISetPool
         if (isInGameboard(input.x, input.y))
         {
             var e = _pool.gameBoardCache.grid[input.x, input.y];
-
-            // TODO fix - doesn't work
-            removeConnectedColor(e);
+            if (e != null && e.isInteractive == true)
+            {
+                removeConnectedColor(e);
+            }
         }
+    }
         
-
-        //removeConnectedColor(entities);
-        return;
-
-        // Ќе идти обратно где уже поставлен isDestroy = true
-
-        /*
-         var input = inputEntity.input;
-
-         if (isInGameboard(input.x, input.y))
-         {
-             var e = _pool.gameBoardCache.grid[input.x, input.y];
-
-             //e.resource.name
-
-             // todo go recursive in all directions and mark e.isDestroy on all of the same color
-             // либо это должна быть система котора€ подписана на убивание штучек конкретного типа - и котора€ после нажати€ и удалени€ первой сделает что-то в зависимости от типа
-             // одна система обычна€ - удалит все воеруг такого же цвета.   input отношени€ не имеет же.  ак бы
-             // IreactiveSystem &     public TriggerOnEvent trigger { get { return Matcher.GameBoardElement.OnEntityRemoved(); } }
-
-
-             if (e != null && e.isInteractive)
-             {
-                 e.isDestroy = true;
-             }
-         }
-
-         _pool.DestroyEntity(inputEntity);*/
-        }
-
-
-
-    
     bool isInGameboard(int x, int y)
     {
         return (x >= 0 && x < _pool.gameBoard.columns)
