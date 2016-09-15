@@ -45,7 +45,7 @@ public class ProcessNormalElementDestroy : IReactiveSystem, ISetPool
         if (!isInGameboard(x, y)) return;
 
         var e = _pool.gameBoardCache.grid[x, y];        
-        if (e.isDestroy) return;
+        if (e == null || e.isDestroy) return;
 
         // found new one - do the logic
         if (e.resource.name == removedResource)
