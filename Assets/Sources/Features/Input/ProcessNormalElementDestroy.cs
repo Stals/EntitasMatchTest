@@ -67,16 +67,24 @@ public class ProcessNormalElementDestroy : IReactiveSystem, ISetPool
     {
         //foreach (var removedEntity in entities)
         //{
-            string removedResource = removedEntity.resource.name;
+        string removedResource = removedEntity.resource.name;
 
-            int x = removedEntity.position.x;
-            int y = removedEntity.position.y;
-            // Diagonals do not work
-            checkCell(removedResource, x + 1, y);
-            checkCell(removedResource, x - 1, y);
-            checkCell(removedResource, x, y + 1);
-            checkCell(removedResource, x, y - 1);
+        int x = removedEntity.position.x;
+        int y = removedEntity.position.y;
+
+        if (removedEntity.isChainable)
+        {
+            checkCell(removedResource, x, y);
+        }
+        removedEntity.isDestroy = true;
+
+        //checkCell(removedResource, x + 1, y);
+        //checkCell(removedResource, x - 1, y);
+        //checkCell(removedResource, x, y + 1);
+        //checkCell(removedResource, x, y - 1);
         //}
+
+        
     }
 
     public void Execute(List<Entity> entities)
@@ -92,6 +100,8 @@ public class ProcessNormalElementDestroy : IReactiveSystem, ISetPool
                 removeConnectedColor(e);
             }
         }
+
+        _pool.DestroyEntity(inputEntity);
     }
         
     bool isInGameboard(int x, int y)

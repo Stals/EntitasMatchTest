@@ -23,6 +23,9 @@ public class GameController : MonoBehaviour {
             .Add(pool.CreateSystem<ProcessNormalElementDestroy>())
             //.Add(pool.CreateSystem<ProcessInputSystem>())
 
+            .Add(pool.CreateSystem<BombDestroySystem>())
+            //.Add(pool.CreateSystem<LaserComponent>())
+
             // Update
             .Add(pool.CreateSystem<CreateGameBoardCacheSystem>())
             .Add(pool.CreateSystem<GameBoardSystem>())

@@ -6,4 +6,6 @@
     public const string Piece4      = "Piece4";
     public const string Piece5      = "Piece5";
     public const string Blocker     = "Blocker";
+    public const string Bomb = "Bomb";
+    public const string Laser = "Laser";
 }
